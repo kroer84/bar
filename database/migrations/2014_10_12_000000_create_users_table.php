@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            /*Campos extras*/
+            $table->string('username')->unique();
+            $table->enum('rol',['user','admin']);
+
         });
     }
 
