@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Proyecto Bar</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Proyecto Bar
                     </a>
                 </div>
 
@@ -38,13 +38,51 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
+                    @auth
+                        <li><a href="#">Ventas</a></li>
+                        <li><a href="#">Historial</a></li>
+                        <!--Mostrar pestañas solo al usuario administrador-->
+
+                    @if(Auth::user()->rol=='admin')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Administración de usuarios <span class="caret"></span>
+                                </a>
+                                <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Usuarios <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Crear nuevo usuario</a>
+                                        <a href="#">Usuarios existentes</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Administración de productos <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Crear nuevo producto</a>
+                                        <a href="#">Productos existentes</a>
+                                        <a href="#">Crear nueva categoria</a>
+                                        <a href="#">Categorias existentes</a>
+                                        
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                        @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
