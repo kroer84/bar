@@ -37,7 +37,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                    </ul>
                     @auth
                         <li><a href="#">Ventas</a></li>
                         <li><a href="#">Historial</a></li>
@@ -77,6 +76,7 @@
                             </li>
                         @endif
                         @endauth
+                        </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
