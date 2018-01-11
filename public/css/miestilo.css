@@ -1,0 +1,88 @@
+header{
+    margin-top: 50px;
+}
+/*Otros*/
+
+.margen-inferior1{
+    margin-bottom: 10px;
+}
+ 
+.margen-inferior2{
+    margin-bottom: 20px;
+}
+
+.margen-superior2{
+    margin-top: 20px;
+}
+
+.margen-inferior5{
+    margin-bottom: 50px;
+}
+
+.margen-superior5{
+    margin-top: 50px;
+}
+
+.padding-superior15{
+     padding-top: 15%;
+}
+
+.padding-superior10{
+     padding-top: 10%;
+}
+
+.categorias{
+    margin-bottom: 30px;
+}
+
+
+/*Vista previa de Ticket*/
+.text{
+    display: block;
+    text-align: center;
+}
+
+.div1{
+    border: 1px solid black;
+}
+@media (max-width:767px){
+   .padding-superior15{
+     padding-top: 5%;
+    }   
+    .margen-inferior1{
+    margin-bottom: 20px;
+    }
+    .padding-superior10{
+     padding-top: 2%;
+    }
+
+    .margen-inferior0{
+        margin-bottom: 10px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .padding-superior15{
+     padding-top: 10%;
+    } 
+    .padding-superior10{
+     padding-top: 10%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) { 
+
+}
+@media (min-width: 1200px) { 
+
+}
+
+
+.img-tam{
+    max-height: 140px; 
+    min-height: 140px;   
+    max-width: 140px;
+    min-width: 140px;
+}
+
+.center {
+    text-align: center;
+}

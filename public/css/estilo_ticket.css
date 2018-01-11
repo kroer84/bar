@@ -1,0 +1,12 @@
+header{
+    display: block;
+    text-align: center;
+}
+img {
+    widows: 150px;
+    height: 150px;
+}
+.text{
+    display: block;
+    text-align: center;
+}
