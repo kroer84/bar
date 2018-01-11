@@ -9,87 +9,53 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-social.css') }}">
+        
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    @if (Auth::check())
+                        <a href="{{ route('inicio') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                        <a href="{{ url('/login') }}">Iniciar Sesion</a>
+                    @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            
         </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+
+                        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1">
+                            <a class="btn btn-social-icon blanco" href="https://www.facebook.com/NubeSolucionesDigitales/" target="_blank" role="button"><span class="fa fa-facebook-square"></span></a>
+                        </div>
+                            
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <a class="btn btn-social-icon blanco" href=" https://twitter.com/nube_soldig" target="_blank" role="button"><span class="fa fa-twitter"></span></a>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <a class="btn btn-social-icon blanco" href=" https://www.instagram.com/nubesolucionesdigitales/" target="_blank" role="button"><span class="fa fa-instagram"></span></a>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <a class="btn btn-social-icon blanco" href="https://www.youtube.com/channel/UCvAcM7XqNTMP4EdzrsjD17A" target="_blank" role="button"><span class="fa fa-youtube-play"></span></a>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <a class="btn btn-social-icon blanco" href=" http://nubepuebla.com/" target="_blank" role="button"><span class="fa fa-cloud"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        </footer>
     </body>
 </html>
