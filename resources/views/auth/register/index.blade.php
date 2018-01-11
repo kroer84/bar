@@ -19,13 +19,19 @@
                           <th class="text-center">Tipo De Usuario</th>
                           <th class="text-center">Acciones</th>
                         </tr>
-                        <!--foreach($users as $user)-->            
+                        @foreach($users as $user)            
                         <tr>
                           
-                          <td> user->name </td>
-                          <td> user->username </td>
-                          <td> user->email </td>
-                          <td> user->rol </td>
+                          <td> {{ $user->name }} </td>
+                          <td> {{ $user->username }}</td>
+                          <td> {{ $user->email }}</td>
+                          <td> 
+                              @if($user->rol=='admin')
+                                  Administrador
+                              @else
+                                  Mesero
+                              @endif
+                          </td>
                           <td>
                             <div class="col-lg-6 col-md-6 col-sm-6 margen-inferior0">
                               <a class="btn btn-default btn-block btn-sm" href="#" role="button">Editar</a>
@@ -35,7 +41,7 @@
                             </div>
                           </td>
                         </tr>
-                        <!--endforeach-->
+                        @endforeach
                       </table>
                     </div>
                 </div>                 

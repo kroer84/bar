@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/inicio', 'HomeController@index')->name('inicio');
 
+/*Esta ruta sirve unicamente como prueba */
 Route::get('/prueba',function(){
 	return view('products.create');
 });
+
+Route::get('/usuarios', 'Auth\RegisterController@index')->name('register.index');
+
