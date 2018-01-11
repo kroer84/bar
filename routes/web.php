@@ -20,5 +20,5 @@ Auth::routes();
 Route::get('/inicio', 'HomeController@index')->name('inicio');
 
 Route::get('/prueba',function(){
-	return view('pdf.ticket');
+	return view('products.create');
 });
