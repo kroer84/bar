@@ -17,6 +17,7 @@ El usuario administrador sera capaz de crear las cuentas del tipo mesero ademas 
 3. Realice un ```composer update``` en la carpeta del proyecto
 4. Genere la **APP_KEY** para el proyecto con el comando: ```php artisan key:generate```
 5. Copie la llave en el archivo **.env**
+6. Se necesita la instalar el paquete **barryvdh/laravel-dompdf** con el comando:```composer require barryvdh/laravel-dompdf```
 
 ## Roles de usuarios
 El proyecto cuenta con dos tipos de usuarios:
