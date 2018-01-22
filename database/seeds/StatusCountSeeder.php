@@ -12,7 +12,7 @@ class StatusCountSeeder extends Seeder
      */
     public function run()
     {
-        StatusCount::truncate();
+   
         StatusCount::create([
             'NombreEstado' => 'En espera de pedido...'
         ]);
@@ -27,7 +27,7 @@ class StatusCountSeeder extends Seeder
 
         StatusCount::create([
             'NombreEstado' => 'En historial'
-        ]);
+        ]);    
 
     }
 }

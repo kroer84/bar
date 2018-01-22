@@ -12,7 +12,7 @@ class StatusCountProductSeeder extends Seeder
      */
     public function run()
     {
-        StatusCountProduct::truncate();
+       
         StatusCountProduct::create([
             'NombreEstado' => 'Por Confirmar'
         ]);

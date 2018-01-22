@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::truncate();
+        
         Category::create([
             'NombreCategoria' => 'Categoria 1'
         ]);
