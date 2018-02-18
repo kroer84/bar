@@ -29,7 +29,7 @@
             @endif
             
         </div>
-        <footer>
+        <footer><!--
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
@@ -55,7 +55,8 @@
                         </div>
                     </div>
                 </div>
-            </div>      
+            </div>
+            -->      
         </footer>
     </body>
 </html>
