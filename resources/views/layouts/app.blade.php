@@ -43,7 +43,7 @@
                         <li><a href="#">Historial</a></li>
                         <!--Mostrar pestañas solo al usuario administrador-->
 
-                    @if(Auth::user()->rol=='admin')
+                    @if(Auth::user()->rol=='admin' || Auth::user()->rol=='master')
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Administración de usuarios <span class="caret"></span>
@@ -59,22 +59,23 @@
                                     </li>
                                 </ul>
                             </li>
+                            @if(Auth::user()->rol=='master')
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Administración de productos <span class="caret"></span>
+                                    </a>
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Administración de productos <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Crear nuevo producto</a>
-                                        <a href="#">Productos existentes</a>
-                                        <a href="#">Crear nueva categoria</a>
-                                        <a href="#">Categorias existentes</a>
-                                        
-                                    </li>
-                                </ul>
-                            </li>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Crear nuevo producto</a>
+                                            <a href="#">Productos existentes</a>
+                                            <a href="#">Crear nueva categoria</a>
+                                            <a href="#">Categorias existentes</a>
+                                            
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
                         @endif
                         @endauth
                         </ul>
