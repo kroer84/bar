@@ -26,3 +26,5 @@ Route::get('/prueba',function(){
 
 Route::get('/usuarios', 'Auth\RegisterController@index')->name('register.index');
 
+/*Falta checar que nombre va a tener esta ruta porque por defecto ocupa la funcion create pero lo ocupa para crear un nuevo usuario y no para mostrar el formulario*/
+Route::get('/usuarios/crear', 'Auth\RegisterController@index')->name('register.create');
