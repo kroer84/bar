@@ -86,3 +86,8 @@ header{
 .center {
     text-align: center;
 }
+
+/*clases Jorge*/
+.panel-centrado{
+    margin-top: 20%;
+}
