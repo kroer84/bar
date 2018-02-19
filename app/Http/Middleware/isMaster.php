@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class isAdmin
+class isMaster
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class isAdmin
     {
         $user=auth()->user();
 
-        if($user->rol!='admin' && $user->rol!='master'){
+        if($user->rol!='master'){
             abort(404);
         }
         return $next($request);
