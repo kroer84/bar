@@ -45,7 +45,7 @@
 
                     @if(Auth::user()->rol=='admin' || Auth::user()->rol=='master')
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Administración de usuarios <span class="caret"></span>
                                 </a>
                                 <a href="#" class="dropdown-toggle visible-sm" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -55,7 +55,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="#">Crear nuevo usuario</a>
-                                        <a href="#">Usuarios existentes</a>
+                                        <a href="{{ route('register.index') }}">Usuarios existentes</a>
                                     </li>
                                 </ul>
                             </li>
