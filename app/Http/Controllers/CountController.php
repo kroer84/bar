@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class CountController extends Controller
 {
-   
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $counts = Count::all()->sortByDesc("id")->whereIn('state_counts_id', [1,2,3]);

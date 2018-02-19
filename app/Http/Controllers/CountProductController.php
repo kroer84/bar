@@ -10,6 +10,11 @@ class CountProductController extends Controller
     private $cuenta;
     private $nombre;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $ventas = Count_Product::all();
