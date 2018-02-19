@@ -56,7 +56,7 @@ th, td {
                 <p class=" text">Número de ticket:</p>
                 <p class=" text">Fecha de emisión:</p>
                 <p class=" text"> Hora de emisión: </p>
-                <p class=" text">Atendido por:{{$user->name}} </p>
+                <p class=" text">Atendido por: {{$user->name}} </p>
             </article>
         </section>
         <div class="container">
