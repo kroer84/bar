@@ -75,6 +75,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('rol') ? ' has-error' : '' }}">
+                            <label for="rol" class="col-md-4 control-label">Permisos</label>
+
+                            <div class="col-md-6">
+                                <select name="rol" class="form-control" value="{{ old('rol') }}" id="rol" required>
+                                  <option value="user" selected >Usuario</option> 
+                                  <option value="gerente">Gerente</option>
+                                  <option value="admin" >Administrador</option>
+
+                                </select>
+                                
+
+                                @if ($errors->has('rol'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rol') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
