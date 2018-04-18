@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProductosRequest;
 use App\Category;
 
 class ProductController extends Controller
@@ -35,7 +36,7 @@ class ProductController extends Controller
         return view ("CRUD_Productos.create",compact('categorias','producto'));
     }
 
-    public function store(Request $request)
+    public function store(ProductosRequest $request)
     {
         $producto  = new Product;
         $producto->categories_id = $request->categories_id;
@@ -47,7 +48,7 @@ class ProductController extends Controller
         }
 
         if ($producto->save()) {
-            return redirect("/productos");
+            return redirect()-> route('productos.index')->with('info','La creación de del producto se realizo exitosamente');
         } else {
             return view("/CRUD_Productos.create",["producto" => $producto]);
         }    
@@ -60,7 +61,7 @@ class ProductController extends Controller
         return view('CRUD_Productos.edit',compact('producto','categorias'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductosRequest $request, $id)
     {
         $producto = Product::findOrFail($id);
         $borrar = $producto->imagen;
@@ -73,7 +74,7 @@ class ProductController extends Controller
         }
 
         if ($producto->save()) {
-            return redirect("/productos");
+            return redirect()-> route('productos.index')->with('success','La edición de del producto se realizo exitosamente');
         } else {
             return view("/CRUD_Productos.create",["producto" => $producto]);
         }
@@ -92,6 +93,6 @@ class ProductController extends Controller
             Storage::disk('public')->delete(substr(Product::findOrFail($id)->imagen,14));
         }
         Product::destroy($id);
-        return redirect('/productos');
+        return redirect()-> route('productos.index')->with('danger',' El producto se elimino exitosamente');
     }
 }
