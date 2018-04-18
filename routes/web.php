@@ -36,8 +36,11 @@ Route::get('/agregar/{id}','CountController@agregar');
 
 /*----------------------------Manejo de usuarios------------------------------------*/
 Auth::routes();
-Route::get('/usuarios', 'Auth\RegisterController@index')->name('register.index');
-Route::get('/usuarios/crear', 'Auth\RegisterController@index')->name('register.create');
+Route::get('/usuarios', 'AuthController@index')->name('usuarios.index');
+Route::get('/usuarios/crear', 'AuthController@create')->name('usuarios.create');
+Route::get('/usuarios/{id}/editar', 'AuthController@edit')->name('usuarios.edit')->where(['id'=>'[\d]+']);
+Route::put('/usuarios', 'AuthController@update')->name('usuarios.update');
+Route::delete('/usuarios', 'AuthController@delete')->name('usuarios.delete');
 /*----------------------------------------------------------------------------------*/
 
 
