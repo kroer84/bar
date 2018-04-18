@@ -12,7 +12,7 @@
 */
 /*---------------------------------------------------------------------------------- */
 /*---------------------------------------------------------------------------------- */
-/*----------------------------------Login----------------------------------------- */
+/*------------------------------------Login----------------------------------------- */
 Route::view('/','welcome');
 /*---------------------------------------------------------------------------------- */
 
@@ -26,6 +26,12 @@ Route::resource('/productos', 'ProductController');
 
 /*----------------------------------Manejo de Cuentas------------------------------- */
 Route::view('/inicio','home')->name('inicio');
+Route::post('/ventas','CountController@venta');
+Route::get('/estado/{id}','CountController@estado');
+Route::get('/confirmar/{id}','CountController@confirmar');
+Route::resource('/cuentas','CountController');
+Route::get('/historial','CountController@historial');
+Route::get('/agregar/{id}','CountController@agregar');
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------Manejo de usuarios------------------------------------*/
