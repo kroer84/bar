@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'categories_id', 'NombreProducto', 'precio',
+        'categories_id', 
+        'NombreProducto', 
+        'precio',
+        'imagen',
     ];
     
     public function category()
@@ -16,7 +19,7 @@ class Product extends Model
     }
 
     public function Counts(){
-        return $this->belongsToMany('\App\Count','count__products','counts_id','products_id')
-            ->withPivot('cantidad','state_count__products_id');
+        return $this->belongsToMany('\App\Count','count_products','counts_id','products_id')
+            ->withPivot('cantidad','status_count_products_id');
     }
 }
