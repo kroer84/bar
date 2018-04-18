@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoriasRequest;
+
 
 class CategoryController extends Controller
 {
@@ -33,7 +35,7 @@ class CategoryController extends Controller
         return view ("CRUD_Categorias.create",["categoria"=>$categoria]);
     }
 
-    public function store(Request $request)
+    public function store(CategoriasRequest $request)
     {
         $categoria  = new Category;
         $categoria->NombreCategoria = $request->NombreCategoria;
@@ -43,7 +45,8 @@ class CategoryController extends Controller
         }
 
         if ($categoria->save()) {
-            return redirect("/categorias");
+            return redirect()-> route('categorias.index')->with('success','La creacikon de la nueva categoria se realizo exitosamente');
+           // return redirect("/categorias");
         } else {
             return view("/CRUD_Categorias.create",["categoria" => $categoria]);
         }
@@ -55,7 +58,7 @@ class CategoryController extends Controller
         return view('CRUD_Categorias.edit',compact('categoria'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoriasRequest $request, $id)
     {
         $categoria = Category::findOrFail($id);
         $borrar = $categoria->imagen;
@@ -69,7 +72,7 @@ class CategoryController extends Controller
         }
 
             if ($categoria->save()) {
-                return redirect("/categorias");
+                return redirect()-> route('categorias.index')->with('success',' La edicion de la categoria se realizo exitosamente');
             } else {
                 return view("/CRUD_Categorias.create",["category" => $category]);
             }
@@ -84,7 +87,8 @@ class CategoryController extends Controller
             Storage::disk('public')->delete(substr(Category::findOrFail($id)->imagen,14));
         }
         Category::destroy($id);
-        return redirect('/categorias');
+        return redirect()-> route('categorias.index')->with('danger',' La categoria se elimino exitosamente');
+
     }
     
 }

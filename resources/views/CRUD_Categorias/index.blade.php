@@ -4,6 +4,8 @@
 
 	<div class="container">
 		<div class="row">
+			@include('partials.alert')
+    		@include('partials.errors')
 			<a href="{{ route('categorias.create') }}" class="btn btn-default btn-lg btn-block">Nueva Categoria</a>
 		</div>
 	</div>
