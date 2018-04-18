@@ -6,6 +6,8 @@
 El usuario debera proporcionar un nombre para poder proceder -->
 <div class="container">
     <div class="row">
+        @include('partials.alert')
+		@include('partials.errors') 
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 align="center">Cuentas</h3>
