@@ -16,10 +16,10 @@ class CountProduct extends Model
     }
 
     public function count(){
-        return $this->belongsTo('App\Count', 'counts_id','id');
+        return $this->hasOne('App\Count', 'counts_id','id');
     }
 
     public function product(){
-        return $this->belongsTo('App\Product', 'products_id', 'id');
+        return $this->hasOne('App\Product', 'products_id', 'id');
     }
 }

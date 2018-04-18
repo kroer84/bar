@@ -20,8 +20,4 @@ class Count extends Model
         return $this->belongsToMany('\App\Product','count_products','counts_id','products_id')
             ->withPivot('cantidad','status_count_products_id');
     }
-
-    public function inventario(){
-        return $this->hasMany('App\CountProduct');
-    }
 }
