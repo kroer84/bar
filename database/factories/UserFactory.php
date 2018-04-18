@@ -21,7 +21,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         /*Campos añadidos*/
         'username'=>$faker->unique()->userName,
-        'rol'=>$faker->randomElement(['user','admin','master'])
+        'rol'=>$faker->randomElement(['mesero','gerente','admin'])
 
     ];
 });

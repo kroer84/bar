@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             /*Campos extras*/
             $table->string('username')->unique();
-            $table->enum('rol',['user','admin','master']);
+            $table->enum('rol',['mesero','gerente','admin']);
 
         });
     }
