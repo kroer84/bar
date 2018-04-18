@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriasRequest extends FormRequest
+class ProductosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,16 @@ class CategoriasRequest extends FormRequest
     {
         if ($this->file()){
             $campos = [
-                'NombreCategoria' => 'required|string|max:30|min:2',
+                'categories_id' => 'required',
+                'NombreProducto' => 'required|string|max:30|min:2',
+                'precio' => 'Integer|Min:0.01|Max:10000',
                 'imagen' => 'required|mimes:jpeg,jpg,png,bmp',
             ];
         }else{
             $campos = [
-                'NombreCategoria' => 'required|string|max:30|min:2',
+                'categories_id' => 'required',
+                'NombreProducto' => 'required|string|max:30|min:2',
+                'precio' => 'Integer|Min:0.01|Max:10000',
             ];
         }       
         return $campos;

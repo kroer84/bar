@@ -45,7 +45,7 @@ class CategoryController extends Controller
         }
 
         if ($categoria->save()) {
-            return redirect()-> route('categorias.index')->with('success','La creacikon de la nueva categoria se realizo exitosamente');
+            return redirect()-> route('categorias.index')->with('info','La creación de la nueva categoria se realizo exitosamente');
            // return redirect("/categorias");
         } else {
             return view("/CRUD_Categorias.create",["categoria" => $categoria]);
