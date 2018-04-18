@@ -57,8 +57,8 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="#">Crear nuevo usuario</a>
-                                        <a href="#">Usuarios existentes</a>
+                                        <a href="{{ route('usuarios.create') }}">Crear nuevo usuario</a>
+                                        <a href="{{ route('usuarios.index') }}">Usuarios existentes</a>
                                     </li>
                                 </ul>
                             </li>
