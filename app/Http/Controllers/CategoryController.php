@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -22,52 +23,68 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
-        return view ("categories.index",["categories"=>$categories]);
+        $categorias = Category::orderBy('id','DESC')->paginate(4);
+        return view ("CRUD_Categorias.index",["categorias"=>$categorias]);
     }
 
     public function create()
     {
-        $category = new Category;
-        return view ("categories.create",["category"=>$category]);
+        $categoria = new Category;
+        return view ("CRUD_Categorias.create",["categoria"=>$categoria]);
     }
 
     public function store(Request $request)
     {
-        $category  = new Category;
-        $category->NombreCategoria = $request->NombreCategoria;
+        $categoria  = new Category;
+        $categoria->NombreCategoria = $request->NombreCategoria;
+        if ($request->file('imagen')){
+            $path = Storage::disk('public')->put('img/categorias', $request->file('imagen'));
+            $categoria->fill(['imagen'=>asset($path)])->save();
+        }
 
-        if ($category->save()) {
-            return redirect("/category");
+        if ($categoria->save()) {
+            return redirect("/categorias");
         } else {
-            return view("/categories.create",["category" => $category]);
+            return view("/CRUD_Categorias.create",["categoria" => $categoria]);
         }
     }
 
-    public function show(Category $category)
+    public function edit($id)
     {
-        return view('categories.show',['category'=>$category]);
+        $categoria = Category::findOrFail($id);
+        return view('CRUD_Categorias.edit',compact('categoria'));
     }
 
-    public function edit(Category $category)
+    public function update(Request $request, $id)
     {
-        return view('categories.edit',compact('category'));
-    }
+        $categoria = Category::findOrFail($id);
+        $borrar = $categoria->imagen;
+        $categoria->fill($request->all())->save();
+       
+        if ($request->file('imagen')){
+            Storage::disk('public')->delete(substr($borrar,14));
+            $path =Storage::disk('public')->put('img/categorias', $request->file('imagen'));
 
-    public function update(Request $request, Category $category)
-    {
-        $category->NombreCategoria = $request->NombreCategoria;
-        
-            if ($category->save()) {
-                return redirect("/category");
+            $categoria->fill(['imagen'=>asset($path)])->save();
+        }
+
+            if ($categoria->save()) {
+                return redirect("/categorias");
             } else {
-                return view("/categories.create",["category" => $category]);
+                return view("/CRUD_Categorias.create",["category" => $category]);
             }
     }
 
-    public function destroy(Category $category)
+    
+
+    public function destroy($id)
     {
-        Category::destroy($category->id);
-        return redirect('/category');
+        //dd(substr(Category::findOrFail($id)->imagen,14));
+        if(file_exists(public_path(substr(Category::findOrFail($id)->imagen,14)))){
+            Storage::disk('public')->delete(substr(Category::findOrFail($id)->imagen,14));
+        }
+        Category::destroy($id);
+        return redirect('/categorias');
     }
+    
 }
