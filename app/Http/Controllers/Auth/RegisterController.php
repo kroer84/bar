@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/inicio';
+    protected $redirectTo = '/usuarios';
 
     /**
      * Create a new controller instance.
@@ -47,16 +47,11 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-    public function index(){
-        $users=User::all();
-        return view('auth.register.index',compact('users'));
-        
-    }
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'username' => 'required|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -72,9 +67,23 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'rol'=> $data['rol'],
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        /*$this->guard()->login($user);*/
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath())->with('success','Usuario creado exitosamente');
     }
 
     
