@@ -40,11 +40,13 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     @auth
+                        <!--Elementos a los que tiene acceso el mesero y los demas-->
                         <li><a href="#">Ventas</a></li>
-                        <li><a href="#">Historial</a></li>
-                        <!--Mostrar pestañas solo al usuario administrador-->
+                        
 
-                    @if(Auth::user()->rol=='admin' || Auth::user()->rol=='master')
+                        <!--Pestañas a las que tiene acceso el usuario gerente y el administrador-->
+                        @if(Auth::user()->rol=='admin' || Auth::user()->rol=='gerente')
+                            <li><a href="#">Historial</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Administración de usuarios <span class="caret"></span>
@@ -56,11 +58,12 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="#">Crear nuevo usuario</a>
-                                        <a href="{{ route('register.index') }}">Usuarios existentes</a>
+                                        <a href="#">Usuarios existentes</a>
                                     </li>
                                 </ul>
                             </li>
-                            @if(Auth::user()->rol=='master')
+                            <!--Pestañas a los que solo tiene acceso el usuario administrador-->
+                            @if(Auth::user()->rol=='admin')
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Administración de productos <span class="caret"></span>
@@ -78,7 +81,7 @@
                                 </li>
                             @endif
                         @endif
-                        @endauth
+                    @endauth
                         </ul>
 
                     <!-- Right Side Of Navbar -->

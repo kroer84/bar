@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         	'name'=>'Mesero',
             'username'=>'mesero',
         	'rol'=>'mesero',
-        	'email'=>'jorge@outlook.com',
+        	'email'=>'mesero@outlook.com',
         	'password'=>bcrypt('mesero')
         ]);
 
@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'name'=>'Gerente',
             'username'=>'gerente',
             'rol'=>'gerente',
-            'email'=>'jjx51@outlook.com',
+            'email'=>'gerente@outlook.com',
             'password'=>bcrypt('gerente')
         ]);
 
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'name'=>'Administrador',
             'username'=>'admin',
             'rol'=>'admin',
-            'email'=>'jjx51@outlook.com',
+            'email'=>'administrador@outlook.com',
             'password'=>bcrypt('admin')
         ]);
 
