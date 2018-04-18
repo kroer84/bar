@@ -19,7 +19,7 @@ class Product extends Model
     }
 
     public function Counts(){
-        return $this->belongsToMany('\App\Count','count__products','counts_id','products_id')
-            ->withPivot('cantidad','state_count__products_id');
+        return $this->belongsToMany('\App\Count','count_products','counts_id','products_id')
+            ->withPivot('cantidad','status_count_products_id');
     }
 }

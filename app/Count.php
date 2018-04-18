@@ -8,7 +8,7 @@ class Count extends Model
 {
     public function StateCount()
     {
-        return $this->belongsTo('App\StatusCount','state_counts_id','id');
+        return $this->belongsTo('App\StatusCount','status_counts_id','id');
     }
 
     public function User()
@@ -17,7 +17,7 @@ class Count extends Model
     }
 
     public function Products(){
-        return $this->belongsToMany('\App\Product','count__products','counts_id','products_id')
-            ->withPivot('cantidad','state_count__products_id');
+        return $this->belongsToMany('\App\Product','count_products','counts_id','products_id')
+            ->withPivot('cantidad','status_count_products_id');
     }
 }

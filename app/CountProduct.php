@@ -8,7 +8,7 @@ class CountProduct extends Model
 {
     protected $table = 'count_products';
 
-    protected $filable = ['counts_id','products_id','cantidad','status_count_products_id'];
+    protected $fillable = ['counts_id','products_id','cantidad','status_count_products_id'];
 
     public function StateCountProduct()
     {
@@ -16,10 +16,10 @@ class CountProduct extends Model
     }
 
     public function count(){
-        return $this->hasOne('App\Count', 'id', 'counts_id');
+        return $this->hasOne('App\Count', 'counts_id','id');
     }
 
     public function product(){
-        return $this->hasOne('App\Product', 'id', 'products_id');
+        return $this->hasOne('App\Product', 'products_id', 'id');
     }
 }
