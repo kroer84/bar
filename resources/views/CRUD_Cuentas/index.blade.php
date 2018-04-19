@@ -81,13 +81,18 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                     <div class="row">
                                         <!--Boton Agregar mas productos-->
                                         <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
-                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/agregar/'.$count->id) }}" role="button">Agregar productos</a>
+                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/agregar/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-plus"></span>  Agregar productos</a>
                                         <!-- -->
                                         </div>
                                                     
                                         <!--Boton Previsualizar ticket-->
                                         <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
-                                            <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button">Detalles</a>
+                                            @if ( count($count->Products) )
+                                                <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @else
+                                                <a class="btn btn-default btn-block disabled" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @endif
+
                                         </div>
                                                 
                                     </div>  
