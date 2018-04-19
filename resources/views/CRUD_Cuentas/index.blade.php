@@ -24,30 +24,41 @@ El usuario debera proporcionar un nombre para poder proceder -->
                             @switch($count->status_counts_id)
                                 @case(1)
                                     <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                <span class="label label-success" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
 
                                 @case(2)
                                     <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                <span class="label label-primary" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
                                 
                                 @case(3)
                                     <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                <span class="label label-danger" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
 
                                 @default
                                     <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                <span class="label label-default" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                             @endswitch
                             
-                                <div class="panel-heading"> 
-                                    <h3 align="center"> Cliente: {{ $count->NombreCliente}}|{{$count->user_id}} <h3>
-                                </div>
                                 <div class="panel-body">
-                                    <p class="text-right">{{ $count->StateCount->NombreEstado }}</p>
-                                    <p>
-                                        {{ Carbon\Carbon::parse($count->created_at)->format('d-m-Y  h:i:s A') }}
-                                        {{ Carbon\Carbon::parse($count->updated_at)->format('d-m-Y  h:i:s A') }}
-                                        <br>
-                                        No. de ticket: {{ $count->id }}<br>
+                            <span class="label label-default" style="float: right">{{ Carbon\Carbon::parse($count->created_at)->format('d-m-Y  h:i:s A') }}</span>
+                                        
+    
+                                        Ticket N°: {{ $count->id }}<br>
                                     </p>
                                     <div class="table-responsive">     
                                         <table class="table table-striped table-bordered table-hover ">
@@ -58,6 +69,7 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                             @endforeach
 
                                             <tr >
+                                            <td>N° de pedidos articulos <span class="badge"> {{$count->Products->count()}}</span></td>
                                                 <td>Total</td>
                                         <td class="info" align="center"> <span class="price">$ {{$sum}}</span> </td>
                                             </tr>
