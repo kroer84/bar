@@ -33,6 +33,9 @@ Route::resource('/cuentas','CountController');
 Route::get('/historial','CountController@historial');
 Route::get('/agregar/{id}','CountController@agregar');
 /*-----------------------------------------------------------------------------------*/
+/*----------------------------------Inventario-------------------------------------- */
+Route::resource('/inventario','InventarioController');
+/*---------------------------------------------------------------------------------- */
 
 /*----------------------------Manejo de usuarios------------------------------------*/
 Auth::routes();
