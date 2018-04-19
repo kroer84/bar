@@ -69,7 +69,7 @@ El usuario debera proporcionar un nombre para poder proceder -->
 								
 					<!--Boton Previsualizar ticket-->
 					<div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
-						<a class="btn btn-default btn-block" href="#" role="button">generar ticket</a>
+						<a class="btn btn-default btn-block" href="{{url('/ticket/'.$cuenta->id)}}" role="button">generar ticket</a>
 					</div>	
 				</div>  
 			</div>     
