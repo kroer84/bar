@@ -33,6 +33,9 @@ Route::resource('/cuentas','CountController');
 Route::get('/historial','CountController@historial');
 Route::get('/agregar/{id}','CountController@agregar');
 /*-----------------------------------------------------------------------------------*/
+/*----------------------------------Inventario-------------------------------------- */
+Route::resource('/inventario','InventarioController');
+/*---------------------------------------------------------------------------------- */
 
 /*----------------------------Manejo de usuarios------------------------------------*/
 Auth::routes();
@@ -46,5 +49,5 @@ Route::delete('/usuarios', 'AuthController@delete')->name('usuarios.delete');
 
 
 /*-------------------------------Manejo de PDF--------------------------------------*/
-Route::get('/ticket', 'PdfController@index')->name('generate-pdf');
+Route::get('/ticket/{id}', 'PdfController@index')->name('generate-pdf');
 /*---------------------------------------------------------------------------------- */
