@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\CountProduct;
+use App\Http\Requests\CuentasRequest;
 
 class CountController extends Controller
 {
@@ -29,7 +30,7 @@ class CountController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CuentasRequest $request)
     {
          // Obtiene el objeto del Usuario Autenticado
          $user = Auth::user();
@@ -41,7 +42,8 @@ class CountController extends Controller
          $cuenta->NombreCliente = $request->NombreCliente;
  
          if ($cuenta->save()) {
-             return redirect("/cuentas");
+            return redirect()-> route('cuentas.index')->with('info','Se creo nueva cuenta para: '.$request->NombreCliente.'');
+
          } else {
              return view("CRUD_Cuentas.create",["cuenta" => $cuenta]);
          }
@@ -119,6 +121,6 @@ class CountController extends Controller
         }
        $cuenta->status_counts_id = 2;
        $cuenta->save();
-    return redirect("/cuentas");
+       return redirect()-> route('cuentas.index')->with('info','Se agregaron nuevos productos a la cuenta de: '.$cuenta->NombreCliente.'');
     }
 }

@@ -7,6 +7,8 @@ El usuario debera proporcionar un nombre para poder proceder -->
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
+			@include('partials.alert')
+			@include('partials.errors') 
 			<a href="{{ route('productos.create') }}" class="btn btn-default btn-lg btn-block">Nuevo producto</a>
 		</div>
 	</div>
