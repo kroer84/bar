@@ -25,7 +25,7 @@ Route::resource('/productos', 'ProductController');
 /*---------------------------------------------------------------------------------- */
 
 /*----------------------------------Manejo de Cuentas------------------------------- */
-Route::view('/inicio','home')->name('inicio');
+Route::get('/inicio','CountController@index')->name('inicio');
 Route::post('/ventas','CountController@venta');
 Route::get('/estado/{id}','CountController@estado');
 Route::get('/confirmar/{id}','CountController@confirmar');
