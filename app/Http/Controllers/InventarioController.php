@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Inventario;
 use Illuminate\Http\Request;
+use App\CountProduct;
+use App\User;
 
 class InventarioController extends Controller
 {
@@ -81,5 +83,11 @@ class InventarioController extends Controller
     public function destroy(Inventario $inventario)
     {
         //
+    }
+
+    public function ventas(){
+        $ventas = CountProduct::all()->where('status_count_products_id','2');
+        return view ("CRUD_Inventario.ventas",compact('ventas'));
+        
     }
 }
