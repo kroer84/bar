@@ -46,7 +46,7 @@
 			                          <td> {{ $user->username }}</td>
 			                          <td> {{ $user->email }}</td>
 			                          <td>
-			                          	@@switch($user->rol)
+			                          	@switch($user->rol)
 			                                @case('admin')
 			                                    Administrador
 			                                    @break
