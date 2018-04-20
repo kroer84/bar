@@ -53,39 +53,38 @@ th, td {
         <div class="container">
         <section class="main row">
             <article class="col-md-12">
-                <p class=" text">Número de ticket:</p>
-                <p class=" text">Fecha de emisión:</p>
-                <p class=" text"> Hora de emisión: </p>
+                <p class=" text">Número de ticket:{{$cuenta->id}}</p>
+                <p class=" text">Fecha de emisión:
+                {{Carbon\Carbon::parse($cuenta->updated_at)->format('d-m-Y')}}
+                
+                <p class=" text"> Hora de emisión: 
+                    {{Carbon\Carbon::parse($cuenta->updated_at)->format('h:i:s A')}}
+                </p>
                 <p class=" text">Atendido por: {{$user->name}} </p>
             </article>
         </section>
         <div class="container">
             <div class="max margen0">
+            <div class="table-responsive">
                 <table class="table " border="0">
                     <tr>
                         <th class="center">Cantidad</th>
                         <th class="center">Producto</th>
                         <th class="center">Costo</th>
                     </tr>
-                    <tr >
-                        <td> 1</td>
-                        <td> Cerveza</td>
-                        <td> $ 50</td>
-                    </tr>
-                    <tr >
-                        <td> 3</td>
-                        <td> Clamato especial con camaron</td>
-                        <td> $ 150</td>
-                    </tr>
-                    <tr >
-                        <td> 2</td>
-                        <td> Mojito</td>
-                        <td> $ 80</td>
-                    </tr>
+                   <?php $sum = 0; ?>
+						@foreach($cuenta->Products as $Product)      
+							<tr>
+								<td align="center">{{$Product->pivot->cantidad}}</td>
+								<td align="center">{{$Product->NombreProducto}}</td>
+								<td align="center"><span class="price">$ {{$Product->precio}} </spam> </td>
+							</tr>
+							<?php $sum += $Product->precio; ?>
+						@endforeach
                     <tr>
+                        <td></td>
                         <th>Subtotal</th>
-                        <th></th>
-                        <th>$280</th>
+                        <th><span class="price">$ {{$sum}}</span> </td>
                     </tr>
                 </table>
             </div>
@@ -94,13 +93,14 @@ th, td {
                 <table class="table margen0" border="0">
                     <tr >
                         <td> Sugerido 10%</td>
-                        <td> $ 14</td>
+                        <td> {{$sum*0.10}}</td>
                     </tr>
                     <tr >
                         <th>Total</th>
-                        <th>$280</th>
+                        <th>{{$sum*1.1}}</th>
                     </tr>
                 </table>
+                </div>
                 <p class=" text"> Gracias por su compra</p>
             </div>
         </div>  

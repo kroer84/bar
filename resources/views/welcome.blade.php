@@ -21,7 +21,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ route('inicio') }}">Inicio</a>
+                        <a href="{{ route('cuentas.index') }}">Inicio</a>
                     @else
                         <a href="{{ url('/login') }}">Iniciar Sesion</a>
                     @endif

@@ -82,6 +82,23 @@ class CountController extends Controller
         $cuenta = new Count;
         return view ("CRUD_Cuentas.index",compact('counts','cuenta'));
     }
+
+    public function cobrado($id){
+        $cuenta = Count::findOrFail($id);
+        $cuenta->status_counts_id = 4;
+        $cuenta->save();
+        return redirect()-> route('cuentas.index')->with('info','Se confirmo el pago de: '.$cuenta->NombreCliente.' y se mando a historial');
+
+    }
+
+    public function reactivar($id){
+        $cuenta = Count::findOrFail($id);
+        $cuenta->status_counts_id = 2;
+        $cuenta->save();
+        return redirect()-> route('cuentas.index')->with('info','la cuenta: '.$cuenta->NombreCliente.' fue reactivada');
+
+    }
+
     public function agregar($id_cuenta){
         $categorias = Category::all();
         $id_user = Auth::id();

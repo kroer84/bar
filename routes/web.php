@@ -25,14 +25,19 @@ Route::resource('/productos', 'ProductController');
 /*---------------------------------------------------------------------------------- */
 
 /*----------------------------------Manejo de Cuentas------------------------------- */
-Route::view('/inicio','home')->name('inicio');
+Route::get('/inicio','CountController@index')->name('inicio');
 Route::post('/ventas','CountController@venta');
 Route::get('/estado/{id}','CountController@estado');
 Route::get('/confirmar/{id}','CountController@confirmar');
 Route::resource('/cuentas','CountController');
 Route::get('/historial','CountController@historial');
+Route::get('/historial/{id}','CountController@cobrado');
+Route::get('/reactivar/{id}','CountController@reactivar');
 Route::get('/agregar/{id}','CountController@agregar');
 /*-----------------------------------------------------------------------------------*/
+/*----------------------------------Inventario-------------------------------------- */
+Route::resource('/inventario','InventarioController');
+/*---------------------------------------------------------------------------------- */
 
 /*----------------------------Manejo de usuarios------------------------------------*/
 Auth::routes();
@@ -46,5 +51,5 @@ Route::delete('/usuarios', 'AuthController@delete')->name('usuarios.delete');
 
 
 /*-------------------------------Manejo de PDF--------------------------------------*/
-Route::get('/ticket', 'PdfController@index')->name('generate-pdf');
+Route::get('/ticket/{id}', 'PdfController@index')->name('generate-pdf');
 /*---------------------------------------------------------------------------------- */

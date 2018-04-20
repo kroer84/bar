@@ -11,7 +11,7 @@
 </div>
 <br>
 <div class="form-group text-right">
-	<input type="submit" value="Crear nueva cuenta" class="btn btn-success btn-block">
+	<input type="submit" value="Crear nueva cuenta" class="btn btn-info btn-block">
 </div>
 
 	

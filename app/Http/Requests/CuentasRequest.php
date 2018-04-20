@@ -24,7 +24,7 @@ class CuentasRequest extends FormRequest
     public function rules()
     {
         return [
-            'NombreCliente' => 'required|string|max:30|min:2',
+            'NombreCliente' => 'required|string|max:30|min:2|unique:counts,NombreCliente',
         ];
     }
 }

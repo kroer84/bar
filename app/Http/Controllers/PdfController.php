@@ -6,35 +6,36 @@ use Illuminate\Http\Request;
 use DB;
 use PDF;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use App\Count;
 
 class PdfController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index(Request $request){
+
+    public function index($cuenta_id){
+        $user_id = Auth::id();
+        $cuenta = Count::findOrFail($cuenta_id);
     	$data = $this->getData();
-    	$id=1;
-        $user = User::findOrFail($id);
-        $pdf = PDF::loadView('pdf.ticket', compact('data','user'));
+        $user = User::findOrFail($user_id);
+        $pdf = PDF::loadView('pdf.ticket', compact('cuenta','user','data'));
         $pdf->setPaper("A4", "portrait");
+        $cuenta->status_counts_id = 3;
+        $cuenta->save();
         //return $pdf->download('invoice.pdf');
         return $pdf->stream('Ticket.pdf');
     }
 
     public function getData(){
         $data =  [
-            'Cantidad'      => '1' ,
-            'description'   => 'some ramdom text',
-            'price'   => '500',
-            'total'     => '500',
             'direccion'=>'Anahuac 47 Puebla, México',
-            'correo'=>'jjx51@outlook.com',
-            'telefono'=>'2226680020',
-            'no_ticket'=>1,
-
+            'correo'=>'kroer17@outlook.com',
+            'telefono'=>'2223125882',
         ];
         return $data;
     }

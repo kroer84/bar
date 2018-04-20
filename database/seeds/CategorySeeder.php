@@ -14,19 +14,19 @@ class CategorySeeder extends Seeder
     {
         
         Category::create([
-            'NombreCategoria' => 'Categoria 1'
+            'NombreCategoria' => 'Cervezas'
         ]);
 
         Category::create([
-            'NombreCategoria' => 'Categoria 2'
+            'NombreCategoria' => 'Cocktails'
         ]);
 
         Category::create([
-            'NombreCategoria' => 'Categoria 3'
+            'NombreCategoria' => 'Refrescos'
         ]);
 
         Category::create([
-            'NombreCategoria' => 'Categoria 4'
+            'NombreCategoria' => 'Cafes'
         ]);
     }
 }

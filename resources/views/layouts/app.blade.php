@@ -30,7 +30,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/cuentas') }}">
                         Proyecto Bar
                     </a>
                 </div>
@@ -46,7 +46,7 @@
 
                         <!--Pestañas a las que tiene acceso el usuario gerente y el administrador-->
                         @if(Auth::user()->rol=='admin' || Auth::user()->rol=='gerente')
-                            <li><a href="#">Historial</a></li>
+                            <li><a href="/historial">Historial</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle hidden-sm" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Administración de usuarios <span class="caret"></span>

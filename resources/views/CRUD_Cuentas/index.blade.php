@@ -24,31 +24,41 @@ El usuario debera proporcionar un nombre para poder proceder -->
                             @switch($count->status_counts_id)
                                 @case(1)
                                     <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                <span class="label label-success" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
 
                                 @case(2)
                                     <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                <span class="label label-primary" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
                                 
                                 @case(3)
                                     <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                <span class="label label-danger" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                                     @break
 
                                 @default
                                     <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                <span class="label label-default" style="float: right">{{ $count->StateCount->NombreEstado }}</span>
+                                    <h3 align="left"> Cliente: {{ $count->NombreCliente}} <h3>
+                                </div>
                             @endswitch
                             
-                                <div class="panel-heading"> 
-                                    <h3 align="center"> Cliente: {{ $count->NombreCliente}}|{{$count->user_id}} <h3>
-                                </div>
                                 <div class="panel-body">
-                                    <p class="text-right">{{ $count->StateCount->NombreEstado }}</p>
-                                    <p>
-                                        {{ Carbon\Carbon::parse($count->created_at)->format('d-m-Y  h:i:s A') }}
-                                        {{ Carbon\Carbon::parse($count->updated_at)->format('d-m-Y  h:i:s A') }}
-                                        <br>
-                                        No. de ticket: {{ $count->id }}<br>
-                                    </p>
+                            <span class="label label-default" style="float: right">{{ Carbon\Carbon::parse($count->created_at)->format('d-m-Y  h:i:s A') }}</span>
+                                        
+    
+                                        Ticket N°: {{ $count->id }}<br>
                                     <div class="table-responsive">     
                                         <table class="table table-striped table-bordered table-hover ">
                                             <?php $sum = 0; ?>
@@ -58,6 +68,7 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                             @endforeach
 
                                             <tr >
+                                            <td>N° de pedidos articulos <span class="badge"> {{$count->Products->count()}}</span></td>
                                                 <td>Total</td>
                                         <td class="info" align="center"> <span class="price">$ {{$sum}}</span> </td>
                                             </tr>
@@ -68,16 +79,43 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                 <div class="panel-footer">
                                     <div class="row">
                                         <!--Boton Agregar mas productos-->
-                                        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
-                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/agregar/'.$count->id) }}" role="button">Agregar productos</a>
+                                        @if($count->status_counts_id === 3)
+                                             <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12">      
+                                            <a class="btn btn-danger btn-block margen-inferior1" href="{{ url('/historial/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-usd"></span>  Confirmar pago</a>
+                                        <!-- -->
+                                        </div>
+                                        @elseif ($count->status_counts_id === 4)
+                                            <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
+                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/reactivar/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-plus"></span>  Reactivar cuenta</a>
                                         <!-- -->
                                         </div>
                                                     
                                         <!--Boton Previsualizar ticket-->
                                         <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
-                                            <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button">Detalles</a>
+                                            @if ( count($count->Products) )
+                                                <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @else
+                                                <a class="btn btn-default btn-block disabled" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @endif
+
                                         </div>
-                                                
+
+                                        @else
+                                        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
+                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/agregar/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-plus"></span>  Agregar productos</a>
+                                        <!-- -->
+                                        </div>
+                                                    
+                                        <!--Boton Previsualizar ticket-->
+                                        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
+                                            @if ( count($count->Products) )
+                                                <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @else
+                                                <a class="btn btn-default btn-block disabled" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @endif
+
+                                        </div>
+                                        @endif        
                                     </div>  
                                 </div>     
                 
