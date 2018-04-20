@@ -59,7 +59,6 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                         
     
                                         Ticket N°: {{ $count->id }}<br>
-                                    </p>
                                     <div class="table-responsive">     
                                         <table class="table table-striped table-bordered table-hover ">
                                             <?php $sum = 0; ?>
@@ -80,6 +79,28 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                 <div class="panel-footer">
                                     <div class="row">
                                         <!--Boton Agregar mas productos-->
+                                        @if($count->status_counts_id === 3)
+                                             <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12">      
+                                            <a class="btn btn-danger btn-block margen-inferior1" href="{{ url('/historial/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-usd"></span>  Confirmar pago</a>
+                                        <!-- -->
+                                        </div>
+                                        @elseif ($count->status_counts_id === 4)
+                                            <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
+                                            <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/reactivar/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-plus"></span>  Reactivar cuenta</a>
+                                        <!-- -->
+                                        </div>
+                                                    
+                                        <!--Boton Previsualizar ticket-->
+                                        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">
+                                            @if ( count($count->Products) )
+                                                <a class="btn btn-default btn-block" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @else
+                                                <a class="btn btn-default btn-block disabled" href="{{url('/cuentas/'.$count->id)}}" role="button"> <span class="glyphicon glyphicon-list-alt"></span> Detalles</a>
+                                            @endif
+
+                                        </div>
+
+                                        @else
                                         <div class="col-lg-6 col-md-6  col-sm-6 col-xs-6">      
                                             <a class="btn btn-default btn-block margen-inferior1" href="{{ url('/agregar/'.$count->id) }}" role="button"><span class="glyphicon glyphicon-plus"></span>  Agregar productos</a>
                                         <!-- -->
@@ -94,7 +115,7 @@ El usuario debera proporcionar un nombre para poder proceder -->
                                             @endif
 
                                         </div>
-                                                
+                                        @endif        
                                     </div>  
                                 </div>     
                 

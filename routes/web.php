@@ -31,6 +31,8 @@ Route::get('/estado/{id}','CountController@estado');
 Route::get('/confirmar/{id}','CountController@confirmar');
 Route::resource('/cuentas','CountController');
 Route::get('/historial','CountController@historial');
+Route::get('/historial/{id}','CountController@cobrado');
+Route::get('/reactivar/{id}','CountController@reactivar');
 Route::get('/agregar/{id}','CountController@agregar');
 /*-----------------------------------------------------------------------------------*/
 /*----------------------------------Inventario-------------------------------------- */
