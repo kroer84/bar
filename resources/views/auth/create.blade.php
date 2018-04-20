@@ -79,7 +79,7 @@
 
                             <div class="col-md-6">
                                 <select name="rol" class="form-control" value="{{ old('rol') }}" id="rol" required>
-                                  <option value="user" selected >Usuario</option> 
+                                  <option value="mesero" selected >Usuario</option> 
                                   <option value="gerente">Gerente</option>
                                   <option value="admin" >Administrador</option>
 
