@@ -17,7 +17,7 @@ class isMaster
     {
         $user=auth()->user();
 
-        if($user->rol!='master'){
+        if($user->rol!='admin'){
             abort(404);
         }
         return $next($request);

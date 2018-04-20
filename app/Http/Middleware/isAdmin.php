@@ -17,7 +17,7 @@ class isAdmin
     {
         $user=auth()->user();
 
-        if($user->rol!='admin' && $user->rol!='master'){
+        if($user->rol!='admin' && $user->rol!='gerente'){
             abort(404);
         }
         return $next($request);

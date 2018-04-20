@@ -14,13 +14,6 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('isMaster');
-        /*El middleware auth protege de los usuarios que no estan autenticados
-        El middleware isAdmin protege las vistas de los usuarios que no son ni admin ni master
-        El middleware isMaster protege las vistas de los usuarios que no sean master
-        La proteccion de rutas las hice por middleware de acuerdo al diagrama de arquitectura de la informacion
-        si alguna vista no deberia de estar bloqueada por algun middleware usa el siguiente codigo:
-        $this->middleware('nombre_middlware',['except'=>['nombre_de_la_funcion']]); con esta linea dices que no quieres
-        que se aplique tal middleware a tal funcion NOTA: el middleware auth siempre debe estar en todas las funciones*/
     }
 
     public function index()
